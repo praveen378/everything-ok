@@ -46,7 +46,7 @@ const PaymentPage = () => {
               <div className=" bg-white rounded-full w-10 h-10 flex items-center justify-center     z-30 overflow-hidden">
                 <img
                   className="w-10"
-                  src="src/assets/images/bar.png" // Replace with real payment icons
+                  src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/bar.webp" // Replace with real payment icons
                   alt="UPI Options"
                 />
               </div>
@@ -66,21 +66,21 @@ const PaymentPage = () => {
                 <div className="   bg-white rounded-full w-10 h-10 flex items-center justify-center border-2 border-gray-300 z-30 overflow-hidden">
                   <img
                     className="w-8 bg-white"
-                    src="src/assets/images/phone.png" // Replace with card icons
+                    src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/phone.webp" // Replace with card icons
                     alt="Card Options"
                   />
                 </div>
                 <div className="   bg-white rounded-full w-10 h-10 flex items-center justify-center border-2 border-gray-300 z-30 overflow-hidden">
                   <img
                     className="w-8"
-                    src="src/assets/images/google.png" // Replace with card icons
+                    src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/google.webp // Replace with card icons
                     alt="Card Options"
                   />
                 </div>
                 <div className="   bg-white rounded-full w-10 h-10 flex items-center justify-center border-2 border-gray-300 z-30 overflow-hidden">
                   <img
                     className="w-9"
-                    src="src/assets/images/patym.png" // Replace with card icons
+                    src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/patym.webp" // Replace with card icons
                     alt="Card Options"
                   />
                 </div>
