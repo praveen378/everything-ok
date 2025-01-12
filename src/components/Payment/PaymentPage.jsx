@@ -1,4 +1,4 @@
-  import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import config from "../../config/config";
@@ -60,7 +60,7 @@ const PaymentPage = () => {
                 <div className="   bg-white rounded-full w-10 h-10 flex items-center justify-center border-2 border-gray-300 z-30 overflow-hidden">
                   <img
                     className="w-8 bg-white"
-                    src="src/assets/images/phone.webp" // Replace with card icons
+                    src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/phone.webp" // Replace with card icons
                     alt="Card Options"
                   />
                 </div>
