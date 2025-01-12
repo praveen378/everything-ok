@@ -9,7 +9,7 @@ const PaymentPage = () => {
   const [qrLink, setQrLink] = useState("");
 
   useEffect(() => {
-    setQrLink(config.paymentQrCoode);
+    setQrLink ("upi://pay?pa=praveen87552@okicici&pn=Praveen%20Rajput&am=51.00&cu=INR&aid=uGICAgMDe_tz9ZQ");
   }, [location.state]);
   return (
     <div className="flex items-center justify-center h-screen bg-gray-200">
