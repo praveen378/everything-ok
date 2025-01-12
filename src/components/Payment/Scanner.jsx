@@ -8,7 +8,7 @@ const Scanner = () => {
 
   useEffect(() => {
     setQrLink(
-      config.paymentQrCoode // Set QR code link from config
+      "upi://pay?pa=praveen87552@okicici&pn=Praveen%20Rajput&am=51.00&cu=INR&aid=uGICAgMDe_tz9ZQ" // Set QR code link from config
     );
   }, [qrLink]);
 
