@@ -8,7 +8,7 @@ export default function About() {
       </h1>
       <div className="flex justify-center items-center mb-8">
         <img
-          src="src/assets/images/logo2.jpg"
+          src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/logo2.webp"
           alt="Logo"
           className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-screen-lg rounded-lg shadow-md"
         />
