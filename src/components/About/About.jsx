@@ -20,7 +20,7 @@ export default function About() {
             नहीं जानते होंगे आप
           </h1>
           <img
-            src="src/assets/images/about1.webp"
+            src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/about1.webp"
             alt="Image 1"
             className="w-full h-auto rounded-lg mb-4"
           />
@@ -45,7 +45,7 @@ export default function About() {
             कितना पुराना है महाकुंभ का इतिहास
           </h1>
           <img
-            src="src/assets/images/about2.webp"
+            src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/about2.webp"
             alt="Image 2"
             className="w-full h-auto rounded-lg mb-4"
           />
@@ -64,7 +64,7 @@ export default function About() {
             कुंभ मेले के आयोजन को लेकर मान्यता
           </h1>
           <img
-            src="src/assets/images/about3.webp"
+            src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/about3.webp"
             alt="Image 3"
             className="w-full h-auto rounded-lg mb-4"
           />
@@ -84,7 +84,7 @@ export default function About() {
             महाकुंभ और समुद्र मंथन के रहस्य
           </h1>
           <img
-            src="src/assets/images/about5.webp"
+            src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/about5.webp"
             alt="Image 4"
             className="w-full h-auto rounded-lg mb-4"
           />
