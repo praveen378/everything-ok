@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from "react";
+ import React, { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import { useLocation } from "react-router-dom";
+import config from "../../config/config";
 
 const Scanner = () => {
-  const location = useLocation(); // Initialize useLocation
-  const [amount, setAmount] = useState(0);
   const [qrLink, setQrLink] = useState("");
 
   useEffect(() => {
-    // Set amount from state or fallback
-    if (location.state && location.state.amount) {
-      setAmount(location.state.amount);
-    } else {
-      setAmount(0); // Default value for amount
-    }
-  }, [location.state]);
-
-  useEffect(() => {
     setQrLink(
-      `upi://pay?pa=praveen87552@okicici&pn=Praveen%20Rajput&am=${amount}.00&cu=INR&aid=uGICAgMDe_tz9ZQ`
+      config.paymentQrCoode // Set QR code link from config
     );
   }, [qrLink]);
 
   return (
     <div className="font-sans p-8 max-w-md mx-auto text-center">
       <div className="text-gray-700 mb-4">
-        Payment Amount: <span className="font-semibold">₹{amount}</span>
+        Payment Amount: <span className="font-semibold">₹51</span>
       </div>
 
       {qrLink && (
