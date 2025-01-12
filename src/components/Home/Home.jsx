@@ -29,7 +29,7 @@ export default function Home() {
             loop
             playsInline
           >
-            <source src="https://kumbh.gov.in/Content/assets/img/Video/MahaKumbh2025-TeaseVideo.mp4" type="video/mp4" />
+            <source src="https://drive.google.com/file/d/1tr9Vzzc2-QHDpQp1KMn34qOKAlvAC4Kx/view" />
           </video>
           <div className="absolute inset-0 bg-black bg-opacity-5"></div>
         </div>
