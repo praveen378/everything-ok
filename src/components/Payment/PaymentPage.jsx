@@ -50,7 +50,7 @@ const PaymentPage = () => {
             {/* UPI Option */}
             <a
               href={qrLink}
-              className="flex justify-between items-center p-4 bg-white rounded-lg cursor-pointer hover:bg-gray-200"
+              className="flex justify-between items-center p-4 bg-white rounded-lg cursor-pointer hover:bg-gray-200 gap-2"
             >
               <div className="flex items-center space-x-4">
                 <i className="far fa-credit-card text-blue-500 text-xl"></i>
