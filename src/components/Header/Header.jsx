@@ -16,7 +16,7 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src="src/assets/images/logo1.webp"
+            src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/logo1.webp"
             alt="Logo"
             className="mr-3 h-12 rounded-full"
           />
