@@ -1,166 +1,143 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import { logout } from "../../store/authSlice.js"; // Redux action for logout
-import { get } from "react-hook-form";
-
-import authService from "../../auth/auth.js";
+import { FiMenu, FiX } from "react-icons/fi";
 
 export default function Header() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Access Redux state for authentication and user data
-  const isLoggedIn = useSelector((state) => state.auth.status);
-  const userData = useSelector((state) => state.auth.userData);
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Derive username from email
-  const userName = userData?.name ? userData.name : "";
-
-  const handleLogout = () => {
-    authService.logout().then(() => {
-      dispatch(logout());
-    });
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
   };
 
   return (
-    <header className="shadow sticky z-50 top-0 w-full">
-      <nav className="bg-orange-500 border-gray-200">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl h-16 px-4 sm:px-6">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img
-              src="https://raw.githubusercontent.com/praveen378/everything-ok/refs/heads/main/src/assets/images/logo1.webp"
-              className="mr-3 h-12 rounded-full"
-              alt="Logo"
-            />
-          </Link>
+    <header className="shadow sticky z-50 top-0 w-full bg-orange-500">
+      <nav className="flex justify-between items-center h-16 px-4 sm:px-6 max-w-screen-xl mx-auto">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img
+            src="src/assets/images/logo1.webp"
+            alt="Logo"
+            className="mr-3 h-12 rounded-full"
+          />
+        </Link>
 
-          {/* Profile and Authentication */}
-          <div
-            className="relative lg:order-2"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
+        {/* Profile */}
+        <div className="flex items-center space-x-4">
+          <NavLink
+            to="/login"
+            className="hidden md:flex items-center px-3 py-2 bg-gray-100 hover:bg-gray-300 rounded-lg"
           >
-            <NavLink
-              to={isLoggedIn ? "/profile" : "/login"}
-              className="w-fit flex h-12 px-2 bg-gray-100 items-center hover:bg-gray-300 focus:ring-4 focus:ring-gray-300 rounded-lg"
-            >
-              <CgProfile className="text-3xl" />
-              <span className="text-gray-800 font-medium text-sm px-4 py-2.5">
-                {isLoggedIn ? userName : "Login"}
-              </span>
-            </NavLink>
+            <CgProfile className="text-2xl mr-1" />
+            <span className="text-sm font-medium text-gray-800">Login</span>
+          </NavLink>
 
-            {isOpen && (
-              <div className="absolute group z-30">
-                {/* Dropdown for Logged-In Users */}
-                <div className="relative right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block">
-                  <Link
-                    to="/profile"
-                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 flex flex-row rounded-lg"
-                  >
-                    <CgProfile className="text-2xl mr-2" />
-                    Profile
-                  </Link>
-                  <Link
-                    onClick={handleLogout}
-                    to="/"
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-                  >
-                    Logout
-                  </Link>
-
-                  <Link
-                    to="/signup"
-                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg flex flex-row"
-                  >
-                    Sign Up
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Navigation Links */}
-          <div
-            className="hidden lg:flex lg:space-x-8 w-auto justify-between items-center"
-            id="mobile-menu-2"
+          {/* Mobile Menu Toggle Button */}
+          <button
+            onClick={toggleMenu}
+            className="flex md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white p-2 rounded-lg"
           >
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:mt-0 space-x-4">
-              <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    `block py-2 pr-4 pl-3 duration-200 ${
-                      isActive ? "text-white" : "text-gray-700"
-                    } hover:text-orange-700`
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/about"
-                  className={({ isActive }) =>
-                    `block py-2 pr-4 pl-3 duration-200 ${
-                      isActive ? "text-orange-700" : "text-gray-700"
-                    } hover:text-orange-700`
-                  }
-                >
-                  About
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    `block py-2 pr-4 pl-3 duration-200 ${
-                      isActive ? "text-orange-700" : "text-gray-700"
-                    } hover:text-orange-700`
-                  }
-                >
-                  Contact
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/donation"
-                  className={({ isActive }) =>
-                    `block py-2 pr-4 pl-3 duration-200 ${
-                      isActive ? "text-orange-700" : "text-gray-700"
-                    } hover:text-orange-700`
-                  }
-                >
-                  Mahadaan
-                </NavLink>
-              </li>
-            </ul>
-          </div>
+            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="lg:hidden">
-            <button className="text-gray-800 p-2 rounded-md">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-8">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `text-white hover:text-orange-300 ${
+                isActive ? "underline underline-offset-4" : ""
+              }`
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `text-white hover:text-orange-300 ${
+                isActive ? "underline underline-offset-4" : ""
+              }`
+            }
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `text-white hover:text-orange-300 ${
+                isActive ? "underline underline-offset-4" : ""
+              }`
+            }
+          >
+            Contact
+          </NavLink>
+          <NavLink
+            to="/donation"
+            className={({ isActive }) =>
+              `text-white hover:text-orange-300 ${
+                isActive ? "underline underline-offset-4" : ""
+              }`
+            }
+          >
+            Mahadaan
+          </NavLink>
+        </div>
+
+        {/* Mobile Navigation (Toggle Menu) */}
+        <div
+          className={`fixed top-0 right-0 h-screen w-64 bg-orange-600 transform transition-transform duration-300 ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <ul className="flex flex-col space-y-6 p-6 text-white">
+            <li>
+              <NavLink
+                to="/"
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-orange-300 block"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
-          </div>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-orange-300 block"
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-orange-300 block"
+              >
+                Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/donation"
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-orange-300 block"
+              >
+                Mahadaan
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/login"
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-orange-300 block"
+              >
+                Login
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>
