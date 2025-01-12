@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../../auth/files";
 
 const Donation = () => {
   const [formData, setFormData] = useState({
     seva: "Mahakumbh Seva",
-    amount: "",
+
     fullName: "",
     phone: "",
     email: "",
@@ -20,19 +20,10 @@ const Donation = () => {
   };
 
   const handleDonate = async () => {
-    const { seva, amount, fullName, phone, email, dateOfBirth, pincode } =
-      formData;
+    const { seva, fullName, phone, email, dateOfBirth, pincode } = formData;
 
     // Check if any field is empty
-    if (
-      !seva ||
-      !amount ||
-      !fullName ||
-      !phone ||
-      !email ||
-      !dateOfBirth ||
-      !pincode
-    ) {
+    if (!seva || !fullName || !phone || !email || !dateOfBirth || !pincode) {
       alert("Please fill in all required fields.");
       return;
     }
@@ -40,7 +31,7 @@ const Donation = () => {
     // Proceed if all fields are filled
     try {
       await service.sendData(formData);
-      navigate("/paymentpage", { state: { amount: formData.amount } });
+      navigate("/paymentpage");
     } catch (error) {
       console.error("Error while donating:", error);
       alert("Something went wrong. Please try again.");
@@ -65,13 +56,13 @@ const Donation = () => {
             className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-orange-500"
           >
             <option>Mahakumbh Seva</option>
-            <option>Other Seva 1</option>
+            <option>Prashadam ki rashi</option>
             <option>Other Seva 2</option>
           </select>
         </div>
 
-        <div className="flex flex-wrap gap-4 mb-6">
-          {[10000, 5100, 3100, 2100, 1100, 501, 101].map((amount) => (
+        {/* <div className="flex flex-wrap gap-4 mb-6">
+          {[51].map((amount) => (
             <button
               key={amount}
               onClick={() => setFormData({ ...formData, amount })}
@@ -92,7 +83,7 @@ const Donation = () => {
             onChange={handleChange}
             className="p-3 w-40 border border-gray-300 rounded-lg"
           />
-        </div>
+        </div> */}
 
         {/* Personal Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -151,9 +142,9 @@ const Donation = () => {
           </p>
           <button
             onClick={handleDonate}
-            className="bg-red-700 text-white px-6 py-2 rounded-lg hover:bg-red-800"
+            className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-700"
           >
-            Donate
+            Donate ₹ 51
           </button>
         </div>
       </div>
